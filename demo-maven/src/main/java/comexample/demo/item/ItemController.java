@@ -1,10 +1,7 @@
 package comexample.demo.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,9 +13,20 @@ public class ItemController {
     @Autowired
     ItemRepo repo;
 
-    @GetMapping()
+    @GetMapping({""})
     public List<Item> root(){
         return repo.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Item getById(@PathVariable Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @GetMapping("/")
+    public Item getByIdParam(@RequestParam Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
 
 }
