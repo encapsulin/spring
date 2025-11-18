@@ -14,7 +14,10 @@ public class ItemController {
     ItemRepo repo;
 
     @GetMapping({""})
-    public List<Item> root(){
+    public List<Item> root(@RequestParam(required = false) List<Long> ids){
+        if (ids != null && !ids.isEmpty()) {
+            return repo.findAllById(ids);
+        }
         return repo.findAll();
     }
 
