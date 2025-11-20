@@ -18,6 +18,7 @@ public class ItemController {
         if (ids != null && !ids.isEmpty()) {
             return repo.findAllById(ids);
         }
+//        throw new RuntimeException("Some error");
         return repo.findAll();
     }
 

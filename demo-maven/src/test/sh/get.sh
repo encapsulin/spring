@@ -6,7 +6,7 @@
 #get="?ids=1,3"
 
 #get="/1"
-get="/?id=1"
+#get="/?id=1"
 
 url=http://localhost:8080/items$get
 echo $url
